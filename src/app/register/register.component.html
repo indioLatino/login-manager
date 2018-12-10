@@ -3,14 +3,14 @@
 		<form name="form" (ngSubmit)="onSubmit()" >
 			<div *ngIf="registerScreen=='1'" class="form-group mx-auto col-md-10" [formGroup]="form">
 				<label for="user-name">Name:</label>
-				<input type="text" name="login" class="form-control" id="user-name"  [(ngModel)]="register.user_name"formControlName="name" (change)="screenOneFilled()"/>
+				<input type="text" name="login" class="form-control" id="user-name"  [(ngModel)]="register.user_name"formControlName="name" (input)="screenOneFilled()"/>
 				<span  *ngIf="form.hasError('required', 'name')" style="color:#676a70;">
 				  	Name field is a mandatory.
   				  </span>
 			</div> 
 			<div *ngIf="registerScreen=='1'" class="form-group mx-auto col-md-10" [formGroup]="form">
 				<label for="user-lastname">Surname</label>
-				<input type="text" name="user-lastname" class="form-control" id="user-lastname" [(ngModel)]="register.user_lastname" formControlName="lastname" >
+				<input type="text" name="user-lastname" class="form-control" id="user-lastname" [(ngModel)]="register.user_lastname" formControlName="lastname"  (input)="screenOneFilled()">
 				<span  *ngIf="form.hasError('required','lastname')" style="color:#676a70;">
 				  	Lastname field is mandatory.
   				  </span>
@@ -18,7 +18,7 @@
 			</div>
 			<div *ngIf="registerScreen=='1'" class="form-group mx-auto col-md-10" [formGroup]="form">
 				<label for="user-email">Email</label>
-				<input type="email" name="user-email" formControlName="email" class="form-control" id="user-email" [(ngModel)]="register.user_email">
+				<input type="email" name="user-email" formControlName="email" class="form-control" id="user-email" [(ngModel)]="register.user_email" (input)="screenOneFilled()">
 				  <span  *ngIf="form.hasError('email', 'email')" style="color:#676a70;">
 				  	Please enter a valid email.
   				  </span>
@@ -28,7 +28,7 @@
 			</div>
 			<div *ngIf="registerScreen=='2'" class="form-group mx-auto col-md-10" [formGroup]="form">
 				<label for="user-birthdate">Birthdate</label>
-				<input [matDatepicker]="myDatepicker" class="form-control"  id="user-birthdate" name="user-birthdate" formControlName="birthdate" [(ngModel)]="register.user_birthdate">
+				<input [matDatepicker]="myDatepicker" class="form-control"  id="user-birthdate" name="user-birthdate" formControlName="birthdate" [(ngModel)]="register.user_birthdate">   
 				<mat-datepicker-toggle [for]="myDatepicker"></mat-datepicker-toggle>
 				<mat-datepicker #myDatepicker></mat-datepicker>	
 				<span  *ngIf="form.hasError('required','birthdate')" style="color:#676a70;">
@@ -59,7 +59,7 @@
 				
 			</div>
 			<div *ngIf="registerScreen=='1'" id="nextRegisterScreen" class="row mx-auto col-md-10">
-				<button class="btn btn-primary col-md-6" [disabled]="firstScreenDirty===true" (click)="nextRegisterScreen()">Next</button>
+				<button class="btn btn-primary col-md-6" [disabled]="firstScreenDirtyObs | async" (click)="nextRegisterScreen()">Next</button>
 				<div class ="col-md-6 text-center py-1">
 					<a routerLink="/login">Cancel</a>
 				</div>

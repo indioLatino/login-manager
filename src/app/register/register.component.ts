@@ -6,7 +6,7 @@ import { MessageService } from '../message.service';
 import { AuthenticationDetails, ISignUpResult, CognitoUser, CognitoUserAttribute} from "amazon-cognito-identity-js";
 import { Gender } from '../gender';
 import { FormGroup , FormControl, FormBuilder, Validators } from '@angular/forms';
-
+import { BehaviorSubject,Observable} from 'rxjs';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html', 
@@ -35,7 +35,9 @@ export class RegisterComponent implements OnInit {
   //Variable to set the email validation
   emailCtrl: FormControl;
   //Variable to control if all the fields in the first screen of registration have been filled
-  firstScreenDirty:boolean=false;
+  //firstScreenDirty:boolean=false;
+  private firstScreenDirty: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
+  public firstScreenDirtyObs: Observable<boolean> = this.firstScreenDirty.asObservable();
 
 
   constructor(private amplifyService: AmplifyService,private messageService: MessageService, private fBuilder: FormBuilder) { 
@@ -64,8 +66,8 @@ export class RegisterComponent implements OnInit {
   }
 
   screenOneFilled(){
-    if((this.form.hasError('required', ['name','lastname','email']))||(this.form.hasError('email', ['email']))){
-      this.firstScreenDirty = true;
+    if(this.form.controls.email.valid&&this.form.controls.lastname.valid&&this.form.controls.name.valid){
+      this.firstScreenDirty.next(false);
     }
   }
   
