@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import Amplify from 'aws-amplify';
+import aws_exports from '../aws-exports';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'login-manager';
+  title = 'User login';
+  ngOnInit(){
+    Amplify.configure(aws_exports);
+    console.log('Amplify Initialised');
+    this.title = "Amplify Initialised";
+  }
 }

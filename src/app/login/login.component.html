@@ -1,0 +1,28 @@
+<div class="mx-auto px-5 mx-2 py-4 mh-100 col-md-6 login-manager-container" >
+	<div class="login-container mx-auto align-self-center" >
+		<form name="form" (ngSubmit)="onSubmit()">
+			<div class="form-group mx-auto col-md-8">
+				<label for="user-name">User:</label>
+				<input type="text" name="login" class="form-control" id="user-name"  [(ngModel)]="user.login" value="{{user.login}}">
+				
+			</div> 
+			<div class="form-group mx-auto col-md-8">
+				<label for="user-password">Password</label>
+				<input type="Password" name="password" class="form-control" id="user-password" [(ngModel)]="user.password">
+				
+			</div>
+			<div class="form-group form-check mx-auto col-md-8">
+			    <label class="form-check-label">
+			      <input class="form-check-input" type="checkbox"> Remember me
+			    </label>
+			</div>
+			<div id="submitButtonContainer" class="mx-auto col-md-8">
+				<button type="submit" class="btn btn-success mx-auto col-md-12">Sign in</button>
+			</div>
+			
+		</form>	
+		<div id="registerButtonContainer" class="mx-auto col-md-8">
+				<button class="btn btn-primary col-md-12" routerLink="/register">Register</button>
+			</div>
+	</div>
+</div>
