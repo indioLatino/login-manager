@@ -20,6 +20,7 @@ export class RegisterComponent implements OnInit {
 	user_birthdate: "",
 	user_email: "",
 	user_password: "",
+  user_password_confirmation: "",
   user_gender:""
 	};
 
@@ -39,6 +40,9 @@ export class RegisterComponent implements OnInit {
   private firstScreenDirty: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
   public firstScreenDirtyObs: Observable<boolean> = this.firstScreenDirty.asObservable();
 
+  //Variable to check if both passwords typed coincide
+  private arePasswordsTheSame: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  public arePasswordsTheSameObs: Observable<boolean> = this.arePasswordsTheSame.asObservable();
 
   constructor(private amplifyService: AmplifyService,private messageService: MessageService, private fBuilder: FormBuilder) { 
      // this.fGroup = fBuilder.group({
@@ -53,7 +57,9 @@ export class RegisterComponent implements OnInit {
       name: new FormControl('',Validators.required),
       birthdate: new FormControl('',Validators.required),
       lastname: new FormControl('',Validators.required),
-      gender: new FormControl('',Validators.required)
+      gender: new FormControl('',Validators.required),
+      password: new FormControl('',Validators.required),
+      password_confirmation: new FormControl('',Validators.required)
     });
     this.form
   }
@@ -66,7 +72,11 @@ export class RegisterComponent implements OnInit {
   }
 
   screenOneFilled(){
-    if(this.form.controls.email.valid&&this.form.controls.lastname.valid&&this.form.controls.name.valid){
+    //Validate if passwords are the same
+    if(this.register.user_password == this.register.user_password_confirmation){
+      this.arePasswordsTheSame.next(true);
+    }
+    if(this.form.controls.password.valid&&this.form.controls.password_confirmation.valid&&this.form.controls.email.valid&&this.form.controls.lastname.valid&&this.form.controls.name.valid&&this.arePasswordsTheSameObs){
       this.firstScreenDirty.next(false);
     }
   }
