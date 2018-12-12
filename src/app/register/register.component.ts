@@ -9,7 +9,7 @@ import { FormGroup , FormControl, FormBuilder, Validators } from '@angular/forms
 import { BehaviorSubject,Observable} from 'rxjs';
 @Component({
   selector: 'app-register',
-  templateUrl: './register.component.html', 
+  templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
 
@@ -41,10 +41,10 @@ export class RegisterComponent implements OnInit {
   public firstScreenDirtyObs: Observable<boolean> = this.firstScreenDirty.asObservable();
 
   //Variable to check if both passwords typed coincide
-  private arePasswordsTheSame: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  public arePasswordsTheSameObs: Observable<boolean> = this.arePasswordsTheSame.asObservable();
+  private arePasswordsDifferent: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
+  public arePasswordsDifferentObs: Observable<boolean> = this.arePasswordsDifferent.asObservable();
 
-  constructor(private amplifyService: AmplifyService,private messageService: MessageService, private fBuilder: FormBuilder) { 
+  constructor(private amplifyService: AmplifyService,private messageService: MessageService, private fBuilder: FormBuilder) {
      // this.fGroup = fBuilder.group({
        //   email: ['', Validators.email]
       //});
@@ -57,9 +57,10 @@ export class RegisterComponent implements OnInit {
       name: new FormControl('',Validators.required),
       birthdate: new FormControl('',Validators.required),
       lastname: new FormControl('',Validators.required),
-      gender: new FormControl('',Validators.required),
-      password: new FormControl('',Validators.required),
-      password_confirmation: new FormControl('',Validators.required)
+      password: new FormControl('',Validators.compose([Validators.minLength(6),Validators.required])),
+      password_confirmation: new FormControl('',Validators.required),
+      gender: new FormControl('',Validators.required)
+
     });
     this.form
   }
@@ -74,13 +75,15 @@ export class RegisterComponent implements OnInit {
   screenOneFilled(){
     //Validate if passwords are the same
     if(this.register.user_password == this.register.user_password_confirmation){
-      this.arePasswordsTheSame.next(true);
+      this.arePasswordsDifferent.next(false);
+    }else{
+      this.arePasswordsDifferent.next(true);
     }
-    if(this.form.controls.password.valid&&this.form.controls.password_confirmation.valid&&this.form.controls.email.valid&&this.form.controls.lastname.valid&&this.form.controls.name.valid&&this.arePasswordsTheSameObs){
+    if(this.form.controls.password.valid && this.form.controls.password_confirmation.valid && this.form.controls.email.valid && this.form.controls.lastname.valid&&this.form.controls.name.valid&&this.arePasswordsDifferentObs){
       this.firstScreenDirty.next(false);
     }
   }
-  
+
   onRegister(userName:string,userPassword:string, userEmail:string, user_birthdate:string, user_lastname:string, user_gender:string){
   	let attributes = [];
   	let dataEmail = {

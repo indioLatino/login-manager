@@ -4,82 +4,87 @@
 			<div *ngIf="registerScreen=='1'" class="form-group mx-auto col-md-10" [formGroup]="form">
 				<label for="user-name">Name:</label>
 				<input type="text" name="login" class="form-control" id="user-name"  [(ngModel)]="register.user_name"formControlName="name" (input)="screenOneFilled()"/>
-				<span  *ngIf="form.hasError('required', 'name')" style="color:#676a70;">
+				<span  class="formInfo" *ngIf="form.hasError('required', 'name')">
 				  	Name field is a mandatory.
-  				  </span>
-			</div> 
+  			</span>
+			</div>
 			<div *ngIf="registerScreen=='1'" class="form-group mx-auto col-md-10" [formGroup]="form">
 				<label for="user-lastname">Surname</label>
 				<input type="text" name="user-lastname" class="form-control" id="user-lastname" [(ngModel)]="register.user_lastname" formControlName="lastname"  (input)="screenOneFilled()">
-				<span  *ngIf="form.hasError('required','lastname')" style="color:#676a70;">
+				<span class="formInfo" *ngIf="form.hasError('required','lastname')" >
 				  	Lastname field is mandatory.
   				  </span>
-				
+
 			</div>
 			<div *ngIf="registerScreen=='1'" class="form-group mx-auto col-md-10" [formGroup]="form">
 				<label for="user-email">Email</label>
 				<input type="email" name="user-email" formControlName="email" class="form-control" id="user-email" [(ngModel)]="register.user_email" (input)="screenOneFilled()">
-				  <span  *ngIf="form.hasError('email', 'email')" style="color:#676a70;">
+				  <span class="formInfo" *ngIf="form.hasError('email', 'email')" >
 				  	Please enter a valid email.
   				  </span>
-  				  <span  *ngIf="form.hasError('required', 'email')" style="color:#676a70;">
+  				  <span class="formInfo" *ngIf="form.hasError('required', 'email')" >
 				  	Email field is mandatory.
-  				  </span>					
+  				  </span>
 			</div>
 			<div *ngIf="registerScreen=='2'" class="form-group mx-auto col-md-10" [formGroup]="form">
 				<label for="user-birthdate">Birthdate</label>
-				<input [matDatepicker]="myDatepicker" class="form-control"  id="user-birthdate" name="user-birthdate" formControlName="birthdate" [(ngModel)]="register.user_birthdate">   
+				<input [matDatepicker]="myDatepicker" class="form-control"  id="user-birthdate" name="user-birthdate"
+				 formControlName="birthdate" [(ngModel)]="register.user_birthdate">
 				<mat-datepicker-toggle [for]="myDatepicker"></mat-datepicker-toggle>
-				<mat-datepicker #myDatepicker></mat-datepicker>	
-				<span  *ngIf="form.hasError('required','birthdate')" style="color:#676a70;">
+				<mat-datepicker #myDatepicker></mat-datepicker>
+				<span class="formInfo" *ngIf="form.hasError('required','birthdate')" >
 				  	Birthdate field is mandatory.
-  				  </span>	
+  				  </span>
 			</div>
 			<div *ngIf="registerScreen=='2'" class="form-group mx-auto col-md-10" [formGroup]="form">
 				<label for="user-password">Gender</label>
-			  	<mat-select placeholder="Gender" class="form-control" name = "user_gender"[(ngModel)]="register.user_gender" formControlName="gender" >
+			  	<mat-select placeholder="Gender" class="form-control" name = "user_gender"
+					[(ngModel)]="register.user_gender" formControlName="gender" >
 			    <mat-option *ngFor="let gender of genders" [value]="gender.value">
 			      {{gender.viewValue}}
 			    </mat-option>
-			    <span  *ngIf="form.hasError('required','gender')" style="color:#676a70;">
+			    <span class="formInfo" *ngIf="form.hasError('required','gender')" >
 				  	Gender field is mandatory
   				  </span>
 			  </mat-select>
 			</div>
-			<div *ngIf="registerScreen==1" class="form-group mx-auto col-md-10">
+			<div *ngIf="registerScreen==1" class="form-group mx-auto col-md-10" [formGroup]="form">
 				<label for="user-password">Password</label>
-				<input type="Password"  required minlength="6" name="user-password" class="form-control ml-0" id="user-password" [(ngModel)]="register.user_password" formControlName="password" (input)="screenOneFilled()">
-  				  <span  *ngIf="form.hasError('required', 'password')" style="color:#676a70;">
-				  	Password field is mandatory.
+				<input type="Password" name="user-password" class="form-control ml-0" id="user-password"
+				[(ngModel)]="register.user_password" formControlName="password" (input)="screenOneFilled()">
+  				  <span class="formInfo" *ngIf="form.hasError('required', 'password')||form.hasError('minlength','password')" >
+				  	Password field is mandatory and must have more than 4 characters
   				  </span>
-				
-			</div>	
-			<div *ngIf="registerScreen==1" class="form-group mx-auto col-md-10">
+
+			</div>
+			<div *ngIf="registerScreen==1" class="form-group mx-auto col-md-10" [formGroup]="form">
 				<label for="user-password-confirmation">Confirm password</label>
-				<input type="Password"  required minlength="6" name="user-password-confirmation" class="form-control ml-0" id="user-password" [(ngModel)]="register.user_password_confirmation" formControlName="password_confirmation" (input)="screenOneFilled()">
-				<span  *ngIf="arePasswordsTheSameObs | async" style="color:#676a70;">
+				<input type="Password" name="user-password-confirmation"
+				class="form-control ml-0" id="user-password_confirmation" [(ngModel)]="register.user_password_confirmation"
+				formControlName="password_confirmation" (input)="screenOneFilled()">
+				<span class="formInfo" *ngIf="arePasswordsDifferentObs | async" >
 				  	Fields password and Password confirmation must coincide.
   				  </span>
-  				<span  *ngIf="form.hasError('required', 'password_confirmation')" style="color:#676a70;">
+  				<span class="formInfo" *ngIf="form.hasError('required', 'password_confirmation')" >
 				  	Password confirmation field is mandatory.
   				 </span>
-			</div>	
+			</div>
 			<div *ngIf="registerScreen=='2'" id="submitButtonContainer" class="row mx-auto col-md-10">
 				<button type="submit" class="btn btn-primary col-md-6">Sign up</button>
 				<div class ="col-md-6 text-center py-1">
 					<a routerLink="/login">Cancel</a>
 				</div>
-				
+
 			</div>
 			<div *ngIf="registerScreen=='1'" id="nextRegisterScreen" class="row mx-auto col-md-10">
 				<button class="btn btn-primary col-md-6" [disabled]="firstScreenDirtyObs | async" (click)="nextRegisterScreen()">Next</button>
 				<div class ="col-md-6 text-center py-1">
 					<a routerLink="/login">Cancel</a>
 				</div>
-				
+
 			</div>
-			
-		</form>	
+
+		</form>
 		<!--<div id="registerButtonContainer" class="col-md-4">
 				<button class="btn btn-primary mx-auto">Register</button>
 			</div>-->
