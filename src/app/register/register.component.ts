@@ -59,7 +59,7 @@ export class RegisterComponent implements OnInit {
       lastname: new FormControl('',Validators.required),
       password: new FormControl('',Validators.compose([Validators.minLength(6),Validators.required])),
       password_confirmation: new FormControl('',Validators.required),
-      gender: new FormControl('',Validators.required)
+      usergender: new FormControl('',Validators.required)
 
     });
     this.form

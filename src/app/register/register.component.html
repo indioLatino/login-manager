@@ -29,9 +29,10 @@
 			<div *ngIf="registerScreen=='2'" class="form-group mx-auto col-md-10" [formGroup]="form">
 				<label for="user-birthdate">Birthdate</label>
 				<input [matDatepicker]="myDatepicker" class="form-control"  id="user-birthdate" name="user-birthdate"
-				 formControlName="birthdate" [(ngModel)]="register.user_birthdate">
+				 formControlName="birthdate" [ngModel]="register.user_birthdate|date:'MM-dd-yyyy'"
+				 (ngModelChange)="register.user_birthdate">
 				<mat-datepicker-toggle [for]="myDatepicker"></mat-datepicker-toggle>
-				<mat-datepicker #myDatepicker></mat-datepicker>
+				<mat-datepicker touchUi #myDatepicker></mat-datepicker>
 				<span class="formInfo" *ngIf="form.hasError('required','birthdate')" >
 				  	Birthdate field is mandatory.
   				  </span>
@@ -39,21 +40,21 @@
 			<div *ngIf="registerScreen=='2'" class="form-group mx-auto col-md-10" [formGroup]="form">
 				<label for="user-password">Gender</label>
 			  	<mat-select placeholder="Gender" class="form-control" name = "user_gender"
-					[(ngModel)]="register.user_gender" formControlName="gender" >
+					[(ngModel)]="register.user_gender" formControlName="usergender" >
 			    <mat-option *ngFor="let gender of genders" [value]="gender.value">
 			      {{gender.viewValue}}
 			    </mat-option>
-			    <span class="formInfo" *ngIf="form.hasError('required','gender')" >
-				  	Gender field is mandatory
-  				  </span>
 			  </mat-select>
+				<span class="formInfo" *ngIf="form.hasError('required','usergender')" >
+					Gender field is mandatory
+				 </span>
 			</div>
 			<div *ngIf="registerScreen==1" class="form-group mx-auto col-md-10" [formGroup]="form">
 				<label for="user-password">Password</label>
 				<input type="Password" name="user-password" class="form-control ml-0" id="user-password"
 				[(ngModel)]="register.user_password" formControlName="password" (input)="screenOneFilled()">
   				  <span class="formInfo" *ngIf="form.hasError('required', 'password')||form.hasError('minlength','password')" >
-				  	Password field is mandatory and must have more than 4 characters
+				  	Password field is mandatory and must have more than 6 characters
   				  </span>
 
 			</div>
