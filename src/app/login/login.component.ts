@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AmplifyService } from 'aws-amplify-angular';
 import { Auth } from 'aws-amplify';
 import { User } from '../user';
-import { MessageService } from '../message.service';
+import { MessageService } from '../services/message.service';
 import {AuthenticationDetails, ISignUpResult , CognitoUser, CognitoUserAttribute} from "amazon-cognito-identity-js";
 
 @Component({
@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
     signedIn: boolean;
     userCognito: any;
     greeting: string;
-  constructor(private amplifyService: AmplifyService,private messageService: MessageService) { 
+  constructor(private amplifyService: AmplifyService,private messageService: MessageService) {
   }
 
   ngOnInit() {

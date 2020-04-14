@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AmplifyAngularModule, AmplifyService } from 'aws-amplify-angular';
 import { MessagesComponent } from './messages/messages.component';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { PasswordRecoveryComponent } from './password-recovery/password-recovery.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -28,6 +29,7 @@ import { MatInputModule, MatButtonModule, MatSelectModule, MatRadioModule, MatCa
     AmplifyAngularModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
