@@ -3,6 +3,9 @@
 # compodoc documentation
 /documentation
 
+#amplify configuration
+amplify/#current-cloud-backend/amplify-meta.json
+
 # compiled output
 /dist
 /tmp
