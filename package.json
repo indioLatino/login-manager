@@ -3,12 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --port 4201",
     "start:es": "ng serve --aot --locale es",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "compodoc": "npx compodoc -p src/tsconfig.app.json"
   },
   "private": true,
   "dependencies": {
@@ -24,6 +25,7 @@
     "@angular/platform-browser-dynamic": "^6.1.0",
     "@angular/router": "^6.1.0",
     "angular-mat-datepicker": "0.0.2",
+    "angular2-post-message": "^1.3.1",
     "aws-amplify": "^1.1.13",
     "aws-amplify-angular": "^2.0.16",
     "bootstrap": "^4.1.3",
@@ -31,6 +33,7 @@
     "hammerjs": "^2.0.8",
     "jquery": "^3.3.1",
     "rxjs": "~6.2.0",
+    "ts-smart-logger": "^0.1.0",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
