@@ -1,4 +1,4 @@
 export class Gender {
-	value: string;
-	viewValue: string;
+  value: string;
+  viewValue: string;
 }

@@ -1,0 +1,37 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "",
+      "UnauthRoleArn": "",
+      "AuthRoleArn": "",
+      "Region": "",
+      "DeploymentBucketName": "",
+      "UnauthRoleName": "",
+      "StackName": "",
+      "StackId": ""
+    }
+  },
+  "auth": {
+    "cognito2686f237": {
+      "service": "",
+      "providerPlugin": "",
+      "providerMetadata": {
+        "s3TemplateURL": "",
+        "logicalId": ""
+      },
+      "lastPushTimeStamp": "",
+      "output": {
+        "AppClientSecret": "",
+        "UserPoolId": "",
+        "AppClientIDWeb": "",
+        "AppClientID": "",
+        "IdentityPoolId": "",
+        "IdentityPoolName": "",
+        "UserPoolName": ""
+      },
+      "lastPushDirHash": "",
+      "[object Object]": {}
+    }
+  },
+  "storage": {}
+}
