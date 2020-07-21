@@ -10,8 +10,16 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { PasswordRecoveryComponent } from './password-recovery/password-recovery.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RegistrationComponent } from './registration/registration.component';
-import { MatInputModule, MatButtonModule, MatSelectModule, MatRadioModule, MatCardModule, MatDatepickerModule,MatNativeDateModule} from '@angular/material';
+import {
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatCardModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatProgressSpinnerModule
+} from '@angular/material';
 
 
 @NgModule({
@@ -20,25 +28,25 @@ import { MatInputModule, MatButtonModule, MatSelectModule, MatRadioModule, MatCa
     LoginComponent,
     RegisterComponent,
     MessagesComponent,
-    PasswordRecoveryComponent,
-    RegistrationComponent
+    PasswordRecoveryComponent
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    AmplifyAngularModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSelectModule,
-    MatRadioModule,
-    MatCardModule,
-    ReactiveFormsModule,
-    MatDatepickerModule,
-    MatNativeDateModule
-  ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        AmplifyAngularModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        HttpClientModule,
+        MatInputModule,
+        MatButtonModule,
+        MatSelectModule,
+        MatRadioModule,
+        MatCardModule,
+        ReactiveFormsModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatProgressSpinnerModule
+    ],
   providers: [
     AmplifyService
   ],

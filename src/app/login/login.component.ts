@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
     login: '',
     password: ''
   };
-  signedIn: boolean;
+  private signingIn = false;
   userCognito: any;
   greeting: string;
 
@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.messageService.clear();
+    this.signingIn = true;
     Auth.signIn(this.user.login, this.user.password)
       .then(user => this.onSuccessLogin(user))
       .catch(err => this.onErrorlogin(err));
@@ -36,16 +37,17 @@ export class LoginComponent implements OnInit {
   }
 
   onErrorlogin(error: any) {
+    this.signingIn = false;
     console.log(error);
     this.messageService.addError(error.message);
   }
 
   onSuccessLogin(user: CognitoUser) {
     console.log(user);
+    this.signingIn = false;
     this.messageService.add('Logado correctamente');
     // todo: Very important to limit the domain to send the message
-    // window.parent.postMessage(JSON.parse(JSON.stringify(user)), '*');
-    localStorage.setItem('user', JSON.parse(JSON.stringify(user)));
+     window.parent.postMessage(JSON.parse(JSON.stringify(user)), '*');
   }
 
 

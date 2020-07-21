@@ -1,21 +1,25 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CognitoErrorManagerService {
 
-  constructor() { }
-  getErrorMessage(error:string){
-  	switch(error){
-  		case "CodeDeliveryDetails":
-  		break;
- 
-  	}
-  	/*CodeDeliveryDetails
-	The code delivery details returned by the server response to the user registration request.
+  constructor() {
+  }
 
-	Type: CodeDeliveryDetailsType object
+  getErrorMessage(error: string) {
+    switch (error) {
+      case 'CodeDeliveryDetails':
+        break;
+
+    }
+  }
+
+  /*CodeDeliveryDetails
+The code delivery details returned by the server response to the user registration request.
+
+Type: CodeDeliveryDetailsType object
 
 UserConfirmed
 A response from the server indicating that a user registration has been confirmed.
@@ -99,5 +103,5 @@ UsernameExistsException
 This exception is thrown when Amazon Cognito encounters a user name that already exists in the user pool.
 
 HTTP Status Code: 400*/
-  }
+
 }

@@ -132,7 +132,8 @@ export class RegisterComponent implements OnInit {
     foodieUser.userNickname = this.register.user_name + ' ' + this.register.user_lastname;
     foodieUser.userPostsNumber = '0';
     foodieUser.userProfilePicture = '';
-    // todo: check a way to retrieve this data from cognito or if not do this on the server when the user saved
+    foodieUser.cognitoUserSub = data.userSub;
+    // todo: check a way to retrieve this data from cognito or if not do this on the server when the user is saved
     foodieUser.userRegistrationDate = '01-01-2020';
     this.foodieService.addUser(foodieUser).subscribe(() => {
       console.log('Correctooooo!!!');
