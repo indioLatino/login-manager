@@ -34,17 +34,17 @@ export class RegisterComponent implements OnInit {
     {value: 'other', viewValue: 'Other'},
     {value: 'rathernottosay', viewValue: 'Rather not to say'}
   ];
-  //Variable to control what registration substring to show
+  // Variable to control what registration substring to show
   registerScreen: string = '1';
   form: FormGroup;
-  //Variable to set the email validation
+  // Variable to set the email validation
   emailCtrl: FormControl;
-  //Variable to control if all the fields in the first screen of registration have been filled
-  //firstScreenDirty:boolean=false;
+  // Variable to control if all the fields in the first screen of registration have been filled
+  // firstScreenDirty:boolean=false;
   private firstScreenDirty: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
   public firstScreenDirtyObs: Observable<boolean> = this.firstScreenDirty.asObservable();
 
-  //Variable to check if both passwords typed coincide
+  // Variable to check if both passwords typed coincide
   private arePasswordsDifferent: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
   public arePasswordsDifferentObs: Observable<boolean> = this.arePasswordsDifferent.asObservable();
 
@@ -139,5 +139,6 @@ export class RegisterComponent implements OnInit {
       console.log('Correctooooo!!!');
     });
     this.messageService.add('Registrado correctamente');
+    window.parent.postMessage(JSON.parse(JSON.stringify({message: 'register success'})), '*');
   }
 }

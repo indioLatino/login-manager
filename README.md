@@ -1,28 +1,31 @@
-# LoginManager
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.1.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 # login-manager
+
+Proyecto web encargado de proporcionar el interfaz de autenticación de la aplicación Foodie.
+
+Este proyecto ha sido construído con la intención de ser reutilizado en otros proyectos web, para dar funcionalidades
+de autenticación de usuario a otros módulos de manera rápida.
+
+## Prerequisitos
+* El login-manager consume servicios de autenticación de Amazon Web Services, específicamente Cognito. 
+Asegúrese de no tener ningun sistema de cortafuegos que impida la conexion con el exterior.
+
+* Es obligatorio tener Nodejs instalado en el equipo. Puede encontrar las instrucciones de instalación para su sistema
+operativo en el siguiente enlace [Nodejs](https://nodejs.org/en/download/package-manager/).
+
+* Es obligatorio tener el manejador de paquetes npm instalado en el equipo. Puede encontrar las instrucciones de instalación para su sistema operativo
+en el siguiente enlace [npm](https://www.npmjs.com/get-npm).
+
+* Es obligatorio tener la herramienta Angular CLI instalada en el equipo. Puede encontrar las instrucciones de instalación 
+en el siguiente enlace [angular-cli](https://angular.io/guide/setup-local).
+
+
+## Arrancar la aplicación
+
+Primeramente hay que posicionarse en el directorio de raíz del proyecto e instalar las dependecias ejecutando:
+`npm install`
+Una vez instaladas las dependencias ejecutar `ng serve --port 4201` para arrancar la aplicación.
+
+Notese que es indispensable especificar el puerto 4201 para que el login-manager pueda se utilizado correctamente por los
+módulos padre que lo importen.
+
+Abra la siguiente url en su navegador para ver la aplicación arrancada `http://localhost:4201/`.
