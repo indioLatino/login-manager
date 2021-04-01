@@ -10,16 +10,15 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { PasswordRecoveryComponent } from './password-recovery/password-recovery.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {
-    MatInputModule,
-    MatButtonModule,
-    MatSelectModule,
-    MatRadioModule,
-    MatCardModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatProgressSpinnerModule
-} from '@angular/material';
+import {RouterModule} from "@angular/router";
+import {MatInputModule} from "@angular/material/input";
+import {MatButtonModule} from "@angular/material/button";
+import {MatSelectModule} from "@angular/material/select";
+import {MatRadioModule} from "@angular/material/radio";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {MatCardModule} from "@angular/material/card";
 
 
 @NgModule({
@@ -35,6 +34,7 @@ import {
         FormsModule,
         AmplifyAngularModule,
         AppRoutingModule,
+        RouterModule,
         BrowserAnimationsModule,
         HttpClientModule,
         MatInputModule,

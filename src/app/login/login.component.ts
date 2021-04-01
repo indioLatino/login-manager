@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
     login: '',
     password: ''
   };
-  private signingIn = false;
+  signingIn = false;
   userCognito: any;
   greeting: string;
 
